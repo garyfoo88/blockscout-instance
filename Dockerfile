@@ -5,13 +5,12 @@ RUN apk --no-cache --update add alpine-sdk gmp-dev automake libtool inotify-tool
 EXPOSE 4000
 
 ENV PORT='{:system, "PORT"}' \
-    MIX_ENV="prod" \
+    MIX_ENV="dev" \
     SECRET_KEY_BASE="RMgI4C1HSkxsEjdhtGMfwAHfyT6CKWXOgzCboJflfSm4jeAlic52io05KB6mqzc5" \
     ETHEREUM_JSONRPC_VARIANT="besu" \
-    NETWORK="POA" \ 
     ETHEREUM_JSONRPC_HTTP_URL="https://a0ssv9trgy:DiXJ3k4BIhWbOL7XOGAM_Jo_OyCF9mVNPqHVczFJg0o@a0htc129vo-a0w4m2lrpx-rpc.au0-aws.kaleido.io" \
-    ETHEREUM_JSONRPC_WS_URL="wss://a0ssv9trgy:DiXJ3k4BIhWbOL7XOGAM_Jo_OyCF9mVNPqHVczFJg0o@a0htc129vo-a0w4m2lrpx-wss.au0-aws.kaleido.io" \ 
-    BLOCK_COUNT_CACHE_PERIOD=1
+    ETHEREUM_JSONRPC_WS_URL="wss://a0ssv9trgy:DiXJ3k4BIhWbOL7XOGAM_Jo_OyCF9mVNPqHVczFJg0o@a0htc129vo-a0w4m2lrpx-wss.au0-aws.kaleido.io" \
+    SHOW_PRICE_CHART="false"
 
 # Cache elixir deps
 ADD mix.exs mix.lock ./
@@ -46,4 +45,4 @@ RUN mix phx.digest
 
 # USER default
 
-# CMD ["mix", "phx.server"]
+CMD ["mix", "phx.server"]

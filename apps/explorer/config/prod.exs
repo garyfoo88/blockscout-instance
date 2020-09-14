@@ -2,9 +2,14 @@ use Mix.Config
 
 # Configures the database
 config :explorer, Explorer.Repo,
-  url: System.get_env("DATABASE_URL"),
-  pool_size: String.to_integer(System.get_env("POOL_SIZE", "50")),
-  ssl: String.equivalent?(System.get_env("ECTO_USE_SSL") || "true", "true"),
+  adapter: Ecto.Adapters.Postgres,
+  database: "blockscoutDatabase",
+  username: "postgres",
+  password: "hAtTU8zQj50ftM6BNuqG",
+  hostname: "database-1.cshpsekipbeb.ap-southeast-1.rds.amazonaws.com",
+  port: 5432,
+  pool_size: 50,
+  ssl: true,
   prepare: :unnamed,
   timeout: :timer.seconds(60)
 

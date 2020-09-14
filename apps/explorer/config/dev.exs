@@ -5,10 +5,14 @@ hostname = if System.get_env("DATABASE_URL"), do: nil, else: "localhost"
 
 # Configure your database
 config :explorer, Explorer.Repo,
-  database: database,
-  hostname: hostname,
-  url: System.get_env("DATABASE_URL"),
-  pool_size: String.to_integer(System.get_env("POOL_SIZE", "50")),
+  adapter: Ecto.Adapters.Postgres,
+  database: "blockscoutDatabase",
+  username: "postgres",
+  password: "hAtTU8zQj50ftM6BNuqG",
+  hostname: "database-1.cshpsekipbeb.ap-southeast-1.rds.amazonaws.com",
+  port: 5432,
+  pool_size: 50,
+  ssl: true,
   timeout: :timer.seconds(80)
 
 config :explorer, Explorer.Tracer, env: "dev", disabled?: true
