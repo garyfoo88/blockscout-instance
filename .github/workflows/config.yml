@@ -3,10 +3,10 @@ name: Blockscout
 on:
   push:
     branches:
-      - master
+      - production
   pull_request:
     branches:
-      - master
+      - production
 
 env:
   MIX_ENV: test
